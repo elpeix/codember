@@ -18,22 +18,26 @@ describe('Catch cybercriminals test', () => {
         expect(catchCybercriminals('97')).toBe('a');
     });
 
+    it('returns a if input is 48', () => {
+        expect(catchCybercriminals('48')).toBe('0');
+    });
+
     it('returns z if input is 122', () => {
         expect(catchCybercriminals('122')).toBe('z');
     });
 
-    it('returns empty string if input is 96 or lower. Only basic lower characters', () => {
-        expect(catchCybercriminals('96')).toBe('');
+    it('returns empty string if input is 47 or lower. Only basic lower characters', () => {
+        expect(catchCybercriminals('47')).toBe('');
         expect(catchCybercriminals('12')).toBe('');
     });
 
     it('returns empty string if input is 123 or greather. Only basic lower characters', () => {
         expect(catchCybercriminals('123')).toBe('');
-        expect(catchCybercriminals('882')).toBe('');
+        expect(catchCybercriminals('332')).toBe('');
     });
     
     it('returns empty words', () => {
-        expect(catchCybercriminals('485785476 8457 8457')).toBe('  ');
+        expect(catchCybercriminals('28 35 17')).toBe('  ');
     });
 
     it('returns midu if input is 109105100117', () => {

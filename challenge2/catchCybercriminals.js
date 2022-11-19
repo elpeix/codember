@@ -7,12 +7,12 @@ const catchCybercriminals = (input) => {
         if (isNaN(asciiWord) || asciiWord < 0) {
             throw new Error('Invalid argument');
         }
-        const asciiChars = asciiWord.match(/(9.{1}|1.{2})/g);
+        const asciiChars = asciiWord.match(/([4-9].{1}|1.{2})/g);
         if (asciiChars === null) {
             return '';
         }
         const chars = asciiChars.map(asciiChar => {
-            if (asciiChar < 97 || asciiChar > 122) {
+            if (asciiChar < 48 || asciiChar > 122) {
                 return '';
             }
             return String.fromCharCode(asciiChar);
