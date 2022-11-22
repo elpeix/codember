@@ -1,9 +1,9 @@
-export const zebraOfColors = (input) => {
-    if (!Array.isArray(input)) {
+export const zebraOfColors = (colors) => {
+    if (!Array.isArray(colors)) {
         throw new Error('Invalid argument');
     }
-    input.forEach((item) => {
-        if (typeof item !== 'string') {
+    colors.forEach((color) => {
+        if (typeof color !== 'string') {
             throw new Error('Invalid argument');
         }
     });
@@ -13,18 +13,18 @@ export const zebraOfColors = (input) => {
     let count = 0;
     let maxCount = 0;
 
-    for (let i = 0; i < input.length; i++) {
-        const color = input[i];
+    for (let i = 0; i < colors.length; i++) {
+        const color = colors[i];
         if (serie.length === 0) {
             serie.push(color);
             count = 1;
-        } else if (input[i - 1] === color) {
+        } else if (colors[i - 1] === color) {
             count = 1;
-        } else if (serie.length === 1 || input[i - 2] === color) {
+        } else if (serie.length === 1 || colors[i - 2] === color) {
             serie.push(color);
             count++;
-        } else if (input[i - 2] !== color) {
-            serie = [input[i - 1], color];
+        } else if (colors[i - 2] !== color) {
+            serie = [colors[i - 1], color];
             count = 2;
         }
         if (count >= maxCount) {
@@ -32,5 +32,5 @@ export const zebraOfColors = (input) => {
             maxSerie = serie;
         }
     }
-    return `${maxCount}@${maxSerie[maxSerie.length - 1]}`;
+    return `${maxCount}@${maxSerie.slice(-1)}`;
 }
